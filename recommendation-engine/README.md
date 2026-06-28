@@ -2,6 +2,8 @@
 
 ![Banner](./banner.png)
 
+![Screenshot — Live Movie Recommendations](./screenshot.png)
+
 > A live desktop application that discovers movies, music, books, travel spots, food, sports & tech — powered by real web data, no API keys needed.
 
 ---
