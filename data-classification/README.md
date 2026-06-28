@@ -2,6 +2,10 @@
 
 ![Banner](./banner.png)
 
+![Screenshot 1 — Dataset Overview & Decision Tree](./screenshot1.png)
+
+![Screenshot 2 — Classification Reports & Model Comparison](./screenshot2.png)
+
 > Supervised machine learning pipeline — two classifiers trained, evaluated, and compared on the classic Iris dataset.
 
 ---
