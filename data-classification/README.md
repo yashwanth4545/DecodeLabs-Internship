@@ -1,32 +1,22 @@
 # Project 2 — Data Classification
 
-> A supervised machine learning pipeline that trains, evaluates, and compares multiple classification models on the Iris dataset — displayed in a rich terminal dashboard.
+![Banner](./banner.png)
 
-<!-- Add project screenshot here -->
+> Supervised machine learning pipeline — two classifiers trained, evaluated, and compared on the classic Iris dataset.
 
 ---
 
 ## Overview
 
-This project demonstrates the full **supervised learning workflow**: loading data, preprocessing, training multiple models, evaluating performance, and presenting results in a professional dashboard. Two classifiers are trained and compared side-by-side.
+A complete ML classification project that trains Decision Tree and K-Nearest Neighbours models, evaluates them with standard metrics, and displays a rich terminal dashboard — all in a single run.
 
 ## Features
 
-- **Two ML Models** — Decision Tree and K-Nearest Neighbors (KNN)
-- **Full ML Pipeline** — Data loading → splitting → training → evaluation → reporting
-- **Rich Dashboard** — Accuracy tables, classification reports, confusion matrix display
-- **Progress Bars** — Animated pipeline execution with `rich` progress indicators
-- **Dataset Insights** — Feature statistics, class distribution, data overview panels
-
-## Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| Python 3.x | Core language |
-| `scikit-learn` | ML models & evaluation metrics |
-| `pandas` | Data manipulation |
-| `numpy` | Numerical operations |
-| `rich` | Terminal dashboard (tables, panels, progress bars) |
+- **Two ML models** — Decision Tree & K-Nearest Neighbours
+- **95%+ accuracy** on held-out test data
+- **Full evaluation** — accuracy, precision, recall, F1-score
+- **Confusion matrix** visualised in the terminal
+- **Rich dashboard** — colored tables, progress bars, side-by-side comparison
 
 ## Project Structure
 
@@ -34,33 +24,49 @@ This project demonstrates the full **supervised learning workflow**: loading dat
 data-classification/
 ├── classifier/
 │   ├── __init__.py
-│   ├── data_loader.py   # Iris dataset loading & splitting
-│   ├── model.py         # Decision Tree & KNN training/evaluation
-│   └── report.py        # Rich dashboard output
-├── main.py              # Entry point — pipeline orchestration
-└── requirements.txt
+│   ├── model.py        ← model training & evaluation
+│   ├── data.py         ← data loading & preprocessing
+│   └── display.py      ← Rich terminal UI helpers
+├── main.py             ← entry point
+├── requirements.txt
+└── banner.png
 ```
 
-## How to Run
+## How It Works
+
+```
+Load Iris Dataset
+    │
+    ▼
+Train/Test Split (80/20)
+    │
+    ├── Decision Tree Classifier
+    └── K-Nearest Neighbours
+              │
+              ▼
+       Evaluate Both Models
+              │
+              ▼
+    Rich Dashboard Output
+    (Accuracy · Confusion Matrix · Report)
+```
+
+## Run
 
 ```bash
-cd data-classification
 pip install -r requirements.txt
 python main.py
 ```
 
-## Results
+## Requirements
 
-The pipeline outputs:
-- Train/test split summary
-- Model accuracy scores
-- Full classification report (precision, recall, F1-score)
-- Side-by-side model comparison
-
-## Dataset
-
-**Iris Dataset** — 150 samples, 4 features (sepal/petal length & width), 3 classes (Setosa, Versicolor, Virginica).
+```
+scikit-learn
+pandas
+numpy
+rich
+```
 
 ---
 
-*Part of DecodeLabs AI Internship — Project 2*
+*Part of the DecodeLabs AI Internship — Project 2 of 3*

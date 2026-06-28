@@ -1,40 +1,28 @@
 # Project 3 — AI Recommendation Engine
 
-> A live AI-powered recommendation engine with a premium desktop GUI. Searches the web in real time across 7 categories — no API keys, no login required.
+![Banner](./banner.png)
 
-<!-- Add project screenshot here -->
+> A live desktop application that discovers movies, music, books, travel spots, food, sports & tech — powered by real web data, no API keys needed.
 
 ---
 
 ## Overview
 
-This project combines **real-time web search**, **intelligent content scraping**, and a **modern desktop UI** to build a fully functional recommendation engine. Users can search for Movies, Music, Books, Travel destinations, Food, Sports, and Tech tools — and get live, streaming results with enriched details.
+"Discover Anything" is a premium dark-mode desktop app built with CustomTkinter. It performs live DuckDuckGo searches and scrapes structured data from reliable sources (IMDb, Last.fm, Wikipedia, Goodreads) to return actual item names — not website links.
 
 ## Features
 
-- **Live Web Search** — Uses DuckDuckGo (no API key, no login needed)
-- **7 Categories** — Movies, Music, Books, Travel, Food, Sports, Tech
-- **Smart Scrapers** — Category-specific data extraction:
-  - 🎵 **Music** → Last.fm track search (actual song names)
-  - ✈ **Travel** → Wikipedia tourist attractions (actual place names)
-  - 📚 **Books** → Wikipedia book category pages (actual book titles)
-  - 🎬 **Movies** → Wikipedia film list pages
-  - 🍜 **Food / ⚙ Tech / ⚽ Sports** → Intelligent snippet extraction
-- **Streaming Results** — Cards appear one by one as data arrives
-- **Premium Desktop UI** — Dark mode, category color themes, hover effects, animated loading
-- **Multi-threaded** — UI never freezes during search operations
-- **Relevance Scoring** — Multi-signal scoring (keyword hits, phrase match, URL match, position)
-
-## Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| Python 3.x | Core language |
-| `customtkinter` | Modern desktop GUI |
-| `ddgs` | DuckDuckGo search (no API key) |
-| `requests` + `beautifulsoup4` | Web scraping |
-| `rich` | Terminal utilities |
-| `threading` | Non-blocking UI |
+- **Live web search** via DuckDuckGo — no API key, no login
+- **7 categories**: Movies, Music, Books, Travel, Food, Sports, Tech
+- **Category-specific scrapers**:
+  - Movies → Wikipedia tables (IMDb linked)
+  - Music → Last.fm track listings
+  - Books → Wikipedia genre category pages
+  - Travel → Wikipedia tourist attraction category pages
+  - Food, Sports, Tech → DuckDuckGo snippet extraction
+- **Streaming results** — cards appear one by one as data arrives
+- **Premium dark-mode UI** — blue diamond logo, category pills, score badges, hover effects
+- **Multi-threaded** — UI stays responsive during searches
 
 ## Project Structure
 
@@ -42,47 +30,57 @@ This project combines **real-time web search**, **intelligent content scraping**
 recommendation-engine/
 ├── recommender/
 │   ├── __init__.py
-│   ├── search.py          # DuckDuckGo search with streaming
-│   ├── filter.py          # Multi-signal relevance scoring
-│   ├── catalog_scraper.py # Category-specific scrapers
-│   └── display.py         # Rich terminal display
-├── app.py                 # Desktop GUI application
-├── main.py                # Terminal entry point
-└── requirements.txt
-```
-
-## How to Run
-
-```bash
-cd recommendation-engine
-pip install -r requirements.txt
-python app.py        # Desktop GUI
-# OR
-python main.py       # Terminal mode
+│   ├── catalog_scraper.py   ← category scrapers + DuckDuckGo search
+│   ├── ranker.py            ← relevance scoring algorithm
+│   └── utils.py             ← shared helpers
+├── app.py                   ← CustomTkinter desktop UI
+├── requirements.txt
+└── banner.png
 ```
 
 ## How It Works
 
 ```
-User Query + Category
-        │
-        ▼
-DuckDuckGo Search (live)
-        │
-        ▼
-Category-Specific Scraper
-   ├── Music    → Last.fm
-   ├── Travel   → Wikipedia attractions
-   ├── Books    → Wikipedia categories
-   └── Others   → Snippet extraction
-        │
-        ▼
-Relevance Scoring & Ranking
-        │
-        ▼
-Stream results → Desktop UI cards
+User types query + selects category
+              │
+              ▼
+    DuckDuckGo search (ddgs)
+              │
+         ┌────┴────┐
+         │         │
+    Catalog     Web Results
+    Scraper     (fallback)
+         │
+    Category Router
+    ├── movies  → Wikipedia table
+    ├── music   → Last.fm
+    ├── books   → Wikipedia category
+    ├── travel  → Wikipedia attractions
+    └── others  → snippet extraction
+              │
+              ▼
+    Relevance Scoring
+              │
+              ▼
+    Stream Cards → Desktop UI
+```
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+## Requirements
+
+```
+customtkinter
+duckduckgo-search
+requests
+beautifulsoup4
 ```
 
 ---
 
-*Part of DecodeLabs AI Internship — Project 3*
+*Part of the DecodeLabs AI Internship — Project 3 of 3*

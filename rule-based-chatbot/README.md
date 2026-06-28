@@ -1,30 +1,21 @@
 # Project 1 — Rule-Based AI Chatbot
 
-> A professional rule-based conversational AI that responds to user queries using regex pattern matching and intent classification — built without any ML library.
+![Banner](./banner.png)
 
-<!-- Add project screenshot here -->
+> A professional terminal chatbot built using pure rule-based NLP — no external AI APIs, no cloud dependencies.
 
 ---
 
 ## Overview
 
-This chatbot demonstrates how intelligent-seeming conversations can be built using deterministic rules. It identifies the user's **intent** from their message and maps it to a relevant response — all using Python's control flow and regular expressions.
+This chatbot uses a hand-crafted intent engine with regex pattern matching to understand user input and respond intelligently across multiple topics. Built to demonstrate how rule-based AI works under the hood — the foundation of all conversational AI systems.
 
 ## Features
 
-- **Intent Engine** — Matches user input against 15+ defined intents (greetings, help, weather, jokes, etc.)
-- **Pattern Matching** — Uses compiled regex for fast, accurate pattern recognition
-- **Rich Terminal UI** — Colorful banners, panels, and formatted output using the `rich` library
-- **Fallback Handling** — Gracefully handles unrecognized inputs
-
-## Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| Python 3.x | Core language |
-| `rich` | Terminal UI (banners, colored text, panels) |
-| `re` (regex) | Pattern matching |
-| `TypedDict` | Structured intent definitions |
+- **Intent Engine** — regex patterns match user input to predefined intents
+- **Multi-topic support** — greetings, farewells, weather, jokes, facts, help
+- **Fallback handling** — graceful responses for unrecognised input
+- **Rich terminal UI** — colored banners, panels, and formatted output
 
 ## Project Structure
 
@@ -32,19 +23,12 @@ This chatbot demonstrates how intelligent-seeming conversations can be built usi
 rule-based-chatbot/
 ├── chatbot/
 │   ├── __init__.py
-│   ├── engine.py       # Core matching & response logic
-│   ├── intents.py      # Intent definitions with patterns & responses
-│   └── utils.py        # Rich terminal display utilities
-├── main.py             # Entry point
-└── requirements.txt
-```
-
-## How to Run
-
-```bash
-cd rule-based-chatbot
-pip install -r requirements.txt
-python main.py
+│   ├── engine.py       ← core intent matching logic
+│   ├── intents.py      ← all intent patterns & responses
+│   └── utils.py        ← terminal display utilities
+├── main.py             ← entry point
+├── requirements.txt
+└── banner.png
 ```
 
 ## How It Works
@@ -53,18 +37,28 @@ python main.py
 User Input
     │
     ▼
-Preprocess (lowercase, strip)
+Regex Pattern Matching  ←── intents.py (patterns + responses)
     │
     ▼
-Match against intent patterns (regex)
+Best Intent Selected
     │
     ▼
-Select random response from matched intent
-    │
-    ▼
-Display formatted response
+Random Response Picked  ──► Terminal Output (Rich UI)
+```
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+## Requirements
+
+```
+rich
 ```
 
 ---
 
-*Part of DecodeLabs AI Internship — Project 1*
+*Part of the DecodeLabs AI Internship — Project 1 of 3*
