@@ -2,6 +2,8 @@
 
 ![Banner](./banner.png)
 
+![Screenshot](./screenshot.png)
+
 > A professional terminal chatbot built using pure rule-based NLP — no external AI APIs, no cloud dependencies.
 
 ---
